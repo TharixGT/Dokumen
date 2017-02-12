@@ -1,0 +1,10 @@
+{
+  "name": "BlindJupp-Server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "BlindJupp Server - Backend",
+  "repository": "https://github.com/angular/angular-seed",
+  "devDependencies": {
+    "bower": "^1.7.7"
+  }
+}

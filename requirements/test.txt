@@ -1,0 +1,4 @@
+-r base.txt
+flake8==3.0.4
+mixer==5.5.7
+pep8-naming==0.4.1

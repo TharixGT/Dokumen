@@ -1,0 +1,4 @@
+-r base.txt
+flake8==3.0.4
+Markdown==2.6.6
+pep8-naming==0.4.1
