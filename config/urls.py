@@ -15,17 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
-from rest_framework import routers
-from rest_framework_jwt.views import obtain_jwt_token
-from rest_framework_jwt.views import refresh_jwt_token
-
-router = routers.DefaultRouter(trailing_slash=False)
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
-    url(r'^api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/api-token-auth/', obtain_jwt_token),
-    url(r'^api/api-token-refresh/', refresh_jwt_token),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^super/', include('cotizador.super.urls', namespace='super')),
     url(r'^admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

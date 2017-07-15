@@ -1,0 +1,63 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+
+{% block header %}
+<div class="row header-clean">
+    <br>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <img class="logo" src="{% static 'img/kualitte.png' %}">
+    </div>
+</div>
+
+{% endblock %}
+
+{% block main %}
+
+<style>
+    .requiredField{
+        color: #a94442;
+    }
+</style>
+<div class="login-box">
+	<!-- /.login-logo -->
+	<div class="login-box-body" style="text-align:center;">
+
+		{% if confirmation %}
+
+		{% user_display confirmation.email_address.user as user_display %}
+
+		<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+			{% csrf_token %}
+            <div class="col-md-12">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <div class="col-xs-2">
+                    </div>
+                    <div class="col-xs-8">
+                        <button class="btn  btn-block"  type="submit" style="background: #fbca91; border-color: #fbca91;">{% trans 'Confirm' %}</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </form>
+
+        {% else %}
+
+        {% url 'account_email' as email_url %}
+
+        <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+

@@ -11,59 +11,60 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-import datetime
-
 from django.utils.translation import ugettext_lazy as _
 
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+    os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'cotizador')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEST = False
+DEBUG = bool(os.environ.get('DEBUG', False))
+TEST = bool(os.environ.get('DEBUG', False))
 
 DOMAIN = os.environ.get('DOMAIN')
 DOMAIN_URL = os.environ.get('DOMAIN_URL')
 
 ALLOWED_HOSTS = ['*']
 
+SITE_ID = 1
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Application definition
 
 DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.contenttypes',
     'django.contrib.humanize',
+
 ]
 
 THIRD_PARTY_APPS = [
-    'rest_framework',
-    'rest_framework_jwt',
-    'corsheaders',
-    'django_q',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'crispy_forms',
 ]
 
-AUTH_USER_MODEL = 'users.User'
-
 LOCAL_APPS = [
-    'app.users',
+    'cotizador.accounts',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -71,10 +72,11 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -85,7 +87,10 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'cotizador', 'accounts', 'templates',),
+            os.path.join(BASE_DIR, 'cotizador', 'super', 'templates',),
             os.path.join(BASE_DIR, 'templates',),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -95,11 +100,17 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'navbar_tags': 'cotizador.super.templatetags.navbar_tags',
+
+            }
         },
     },
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # Database
@@ -143,11 +154,53 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+'''
+Authentication for Allauth Backend
+'''
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+'''
+Authentication forms
+'''
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_AUTHENTICATION_METHOD = ("email")
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_USERNAME_FIELD = 'email'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_VERIFICATION = None
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # One month
+
+
+ACCOUNT_FORMS = {
+    "login": "cotizador.accounts.forms.CustomLoginForm",
+    "signup": "cotizador.accounts.forms.CustomSignupForm",
+    "reset_password": "cotizador.accounts.forms.CustomResetPasswordForm",
+    "reset_password_from_key": "cotizador.accounts.forms.CustomResetPasswordKeyForm",
+    "change_password": "cotizador.accounts.forms.CustomChangePasswordForm",
+}
+LOGIN_REDIRECT_URL = "/super/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/super/"
+LOGOUT_REDIRECT_URL = "/super/"
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'es_ES'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -169,43 +222,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = os.environ.get('MEDIA_URL')
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+)
 
 # DJANGO REST FRAMEWORK
-
-REST_FRAMEWORK = {
-    'PAGE_SIZE': 10,
-    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
-    'DEFAULT_VERSIONING_CLASS':
-    'rest_framework.versioning.NamespaceVersioning',
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ],
-    'PAGE_SIZE': 10,
-    'DATE_FORMAT': "iso-8601",
-}
-
-
-JWT_AUTH = {
-    'JWT_ENCODE_HANDLER':
-    'rest_framework_jwt.utils.jwt_encode_handler',
-
-    'JWT_DECODE_HANDLER':
-    'rest_framework_jwt.utils.jwt_decode_handler',
-
-    'JWT_ALLOW_REFRESH': True,
-
-    'JWT_VERIFY_EXPIRATION': False,
-
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=(8 * 60 * 60)),
-
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(seconds=(8 * 60 * 60)),
-}
-
 
 '''
 EMAIL CONFIG
@@ -220,8 +241,10 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 DOMAIN_HOST = os.environ.get('DOMAIN')
 
-"""
-PAYPAL CONFIG
-"""
-PAYPAL_IDENTITY_TOKEN = "AVlksN9kzyEgS0zzDb11uy8ck7nlVJU24Mc7oXzNaVjYuRL9PGKpgm5-cqne0OHCSpemZXkugaKqRvpb"  # noqa
-PAYPAL_TEST = True
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE')
+CAPTCHA_AJAX = True
+RECAPTCHA_USE_SSL = False
+
+print "BASE_DIR-----------------"
+print BASE_DIR

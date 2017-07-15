@@ -1,0 +1,89 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta name="viewport" content="width=device-width">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Taxibusnerja</title>
+            <link rel="stylesheet" type="text/css" href="static/css/email.min.css" />
+        </head>
+        <body bgcolor="#FFFFFF">
+            <!-- HEADER -->
+            <table class="head-wrap" bgcolor="#D4CCC5">
+                <tr>
+                    <td></td>
+                    <td class="header container">
+                        <div class="content">
+                            <table bgcolor="#D4CCC5">
+                                <tr>
+                                    <td>
+                                        <img src="{{ current_site.domain }}{% static 'img/logo.png' %}" style="width:20%;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </table><!-- /HEADER -->
+
+            <!-- BODY -->
+            <table class="body-wrap">
+                <tr>
+                    <td></td>
+                    <td class="container" bgcolor="#FFFFFF">
+                        <div class="content">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p style="text-align: center;">
+                                             <img src="{{ current_site.domain }}{% static 'img/logo.png' %}" style="width:40%;"/>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            {%block main %}
+                            {% endblock %}
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </table><!-- /BODY -->
+            <!-- social & contact -->
+            <table class="social" width="100%">
+                <tr>
+                    <td>
+                        <!--- column 1 -->
+                        <table align="left" class="column">
+                            <tr>
+                                <td>
+                                    <h5 class="">Muchas gracias!</h5>
+                                    <h4>Equipo Taxibusnerja.</h4>
+                                </td>
+                            </tr>
+                        </table><!-- /column 1 -->
+                        <!--- column 2 -->
+                        <table align="left" class="column">
+                            <tr>
+                                <td>
+                                    <h5 class="">Datos de contacto:</h5>
+                                    <p>Tlf: (0034) 650 180 835
+                                    <br/>
+                                      C/Prolongación Antonio Millón 25, Nerja
+                                    <br/>
+                                    E-mail: <strong><a href="emailto:info@taxibusnerja.com">info@taxibusnerja.com </a></strong></p>
+                                </td>
+                            </tr>
+                        </table><!-- /column 2 -->
+
+                        <span class="clear"></span>
+
+                    </td>
+                </tr>
+            </table><!-- /social & contact -->
+        </body>
+    </html>
+
+

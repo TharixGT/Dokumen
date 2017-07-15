@@ -1,5 +1,7 @@
 configparser==3.5.0
-Django==1.10.5
+Django==1.11
+django-allauth==0.25.2
+django-crispy-forms==1.6.0
 django-countries==4.0
 django-dotenv==1.4.1
 django-filter==0.15.3

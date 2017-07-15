@@ -1,0 +1,44 @@
+{% extends 'account/email/main_mail.html' %}
+{% load i18n %}
+{% load static %}
+
+{%block main %}
+<table style="width: 450px; word-wrap: break-word;">
+    <tr>
+        <td style="text-align: center;">
+            <h2>¡Bienvenido a <a href="{{ current_site.domain }}">{{ current_site.domain }}</a>!</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Ha recibido este correo porque te has registrado como miembro en nuestra página web.</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Por favor, confirma tu correo en el siguiente enlace para activar tu cuenta y poder pujar
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <a style="
+                        text-decoration: none;
+                        color: #FFF;
+                        background-color: #666;
+                        padding: 10px 16px;
+                        font-weight: bold;
+                        margin-right: 10px;
+                        text-align: center;
+                        cursor: pointer;
+                        display: inline-block;" href="{{ activate_url }}">Activar cuenta</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>Si no ve correctamente el botón, vaya a esta dirección
+            <a  href="{{ activate_url }}">{{ activate_url }}</a>
+            </p>
+        </td>
+    </tr>
+</table>
+{% endblock %}

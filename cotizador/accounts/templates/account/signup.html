@@ -1,0 +1,61 @@
+{% extends 'account/base.html' %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+{% get_static_prefix as STATIC_URL %}
+
+
+{% block extra_head %}
+{% endblock %}
+
+
+{% block main %}
+{% load crispy_forms_tags %}
+
+
+
+<div class="container-fluid">
+    <div class="container container-ligth-green">
+        <div class="row">
+            <h1>{% trans 'Sign Up' %}</h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container container-ligth-green" style="text-align:left;">
+        <div class="row">
+            <div class="login-box">
+                <!-- /.login-logo -->
+                <div class="login-box-body">
+                    <form method="post" action="{% url 'account_signup' %}">
+
+                        <div class="col-md-12">
+                            {% crispy form %}
+                            <br>
+
+                            <div class="col-xs-4 col-xs-offset-4">
+                                <input type="submit" style="background: #333; color:white; border-color: #333;" value="{% trans "Sign Up" %} &raquo;" class="btn btn-block">
+                            </div>
+                            <br>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="auth-links text-center">
+                                <br>
+                                <p>{% trans "Already you registered?" %}</p>
+                                <p>
+                                    <a style="color: #FFFFFF;" href="{{ login_url }}">{% trans "sign in" %}</a>.</p>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

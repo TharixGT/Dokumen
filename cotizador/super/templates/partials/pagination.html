@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load pagination_tags %}
+{% if is_paginated %}
+
+<div class="panel-footer">
+    <nav>
+        <ul class="pagination text-center">
+            {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}&{{ request|querystring_without_page }}" aria-label="{% trans 'Previous' %}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            {% for page_number in page_obj|pagination_range:8 %}
+            {% if page_number == page_obj.number %}
+            <li class="active">
+                <a href="#">{{ page_number }}</a>
+            </li>
+            {% elif page_number == '...' %}
+            <li>
+                <a href="#" class="disabled">...</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="?page={{ page_number }}&{{ request|querystring_without_page }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{ page_obj.next_page_number }}&{{ request|querystring_without_page }}" aria-label="{% trans 'Next' %}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+</div>
+{% endif %}
