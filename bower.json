@@ -1,6 +1,6 @@
 {
-  "name": "BlindJupp-Server",
-  "description": "BlindJupp Server - Backend",
+  "name": "ManejadorDocumentos-Server",
+  "description": "ManejadorDocumentos Server - Backend",
   "version": "0.0.0",
   "homepage": "https://github.com/angular/angular-seed",
   "license": "MIT",

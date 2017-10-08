@@ -61,10 +61,12 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
+    'colorfield',
 ]
 
 LOCAL_APPS = [
-    'cotizador.accounts',
+    'app.accounts',
+    'app.common',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -87,8 +89,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'cotizador', 'accounts', 'templates',),
-            os.path.join(BASE_DIR, 'cotizador', 'super', 'templates',),
+            os.path.join(BASE_DIR, 'app', 'accounts', 'templates',),
+            os.path.join(BASE_DIR, 'app', 'super', 'templates',),
+            os.path.join(BASE_DIR, 'app', 'site', 'templates', 'site'),
             os.path.join(BASE_DIR, 'templates',),
 
         ],
@@ -101,7 +104,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries':{
-                'navbar_tags': 'cotizador.super.templatetags.navbar_tags',
+                'navbar_tags': 'app.super.templatetags.navbar_tags',
 
             }
         },
@@ -185,11 +188,11 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # One month
 
 
 ACCOUNT_FORMS = {
-    "login": "cotizador.accounts.forms.CustomLoginForm",
-    "signup": "cotizador.accounts.forms.CustomSignupForm",
-    "reset_password": "cotizador.accounts.forms.CustomResetPasswordForm",
-    "reset_password_from_key": "cotizador.accounts.forms.CustomResetPasswordKeyForm",
-    "change_password": "cotizador.accounts.forms.CustomChangePasswordForm",
+    "login": "app.accounts.forms.CustomLoginForm",
+    "signup": "app.accounts.forms.CustomSignupForm",
+    "reset_password": "app.accounts.forms.CustomResetPasswordForm",
+    "reset_password_from_key": "app.accounts.forms.CustomResetPasswordKeyForm",
+    "change_password": "app.accounts.forms.CustomChangePasswordForm",
 }
 LOGIN_REDIRECT_URL = "/super/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/super/"
@@ -240,11 +243,3 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 DOMAIN_HOST = os.environ.get('DOMAIN')
-
-RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC')
-RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE')
-CAPTCHA_AJAX = True
-RECAPTCHA_USE_SSL = False
-
-print "BASE_DIR-----------------"
-print BASE_DIR

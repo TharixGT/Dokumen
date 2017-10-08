@@ -1,0 +1,72 @@
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Ingreso | Manejador de Documentos</title>
+    <!-- Favicon-->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="{% static 'plugins/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% block extra_head %}
+    {% endblock %}
+
+    <!-- Jquery Core Js -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+
+</head>
+<body class="login-page">
+<div class="login-box">
+<!-- # Notificaciones -->
+    {% if messages %}
+        {% for message in messages %}
+            <script type="text/javascript">
+                $( document ).ready(function() {
+                    showNotification("alert-"+'{{ message.tags }}', '{{ message }}', "top", "center", "", "");
+                });
+            </script>
+        {% endfor %}
+    {% endif %}
+    {% block main %}
+    {% endblock %}
+</div>
+
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="{% static 'plugins/bootstrap-notify/bootstrap-notify.js' %}"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.js' %}"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="{% static 'plugins/node-waves/waves.js' %}"></script>
+
+    <!-- Validation Plugin Js -->
+    <script src="{% static 'plugins/jquery-validation/jquery.validate.js' %}"></script>
+
+    <!-- Custom Js -->
+    <script src="{% static 'js/admin.js' %}"></script>
+    <script src="{% static 'js/notifications.js' %}"></script>
+
+    <script src="{% static 'js/sign-in.js' %}"></script>
+</body>
+</html>
+

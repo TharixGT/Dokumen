@@ -1,5 +1,5 @@
 """
-WSGI config for blindjupp project.
+WSGI config for ManejadorDocumentos project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

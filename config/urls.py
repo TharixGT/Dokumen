@@ -1,4 +1,4 @@
-"""blindjupp URL Configuration.
+"""ManejadorDocumentos URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -21,6 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^super/', include('cotizador.super.urls', namespace='super')),
+    url(r'^super/', include('app.super.urls', namespace='super')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('app.site.urls', namespace='site')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,8 +1,8 @@
 {
-  "name": "BlindJupp-Server",
+  "name": "ManejadorDocumentos-Server",
   "private": true,
   "version": "1.0.0",
-  "description": "BlindJupp Server - Backend",
+  "description": "ManejadorDocumentos Server - Backend",
   "repository": "https://github.com/angular/angular-seed",
   "devDependencies": {
     "bower": "^1.7.7"
