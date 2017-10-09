@@ -2,44 +2,86 @@
 {% extends 'super/base.html' %}
 {% load i18n %}
 {% load static %}
+{% load pagination_tags %}
+{% load tz %}
+
+{% block title_header %}
+{% trans 'View' %} {% trans 'Folder' %}
+{% endblock %}
+
 {% block container %}
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="card">
-        <div class="header">
+        <div class="header" style="background: {{carpetasColor}};">
             <h2>
-                Archivos
+                {% trans 'Files in this folder' %}: <strong>{{carpetasTitulo}}</strong>
             </h2>
         </div>
         <div class="body table-responsive">
+            <form method="GET" action="{% url 'super:folder-search' id_carpeta %}" id="search_text" style="position: relative; display: inline-flex; vertical-align: middle; width: 100%; padding: 10px 13px;">
+                <input id="search" name="search" type="text" class="form-control" placeholder="{% trans 'Search' %}" value="{{search_text}}">
+                <button type="submit" form="search_text" style="background: #baa130; margin-left: 9px;" class="btn btn-circle waves-effect waves-circle waves-float"  data-toggle="tooltip" data-placement="top" title=""data-original-title="{% trans 'Search' %}">
+                    <i class="material-icons">search</i>
+                </button>
+                <a href="{% url 'super:folder-view' id_carpeta %}" class="btn btn-default btn-circle waves-effect waves-circle waves-float" role="button" aria-haspopup="true" aria-expanded="false" style="margin-left: 10px;" data-toggle="tooltip" data-placement="top" title=""data-original-title="{% trans 'Clear' %}">
+                    <i class="material-icons">clear</i>
+                </a>
+            </form>
             {% if archivos %}
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>NOMBRE</th>
-                            <th>TAGS</th>
-                            <th>ARCHIVO</th>
+                            <th style="text-transform: uppercase;">{% trans 'Name' %}</th>
+                            <th style="text-transform: uppercase;">{% trans 'Tags' %}</th>
+                            <th style="text-transform: uppercase;">{% trans 'File' %}</th>
+                            <th style="text-transform: uppercase;">{% trans 'Date' %}</th>
+                            <th style="text-transform: uppercase;">{% trans 'User' %}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for current in archivos %}
                             <tr>
                                 <td style="vertical-align:middle;">{{ current.nombre }}</td>
-                                <td style="vertical-align:middle;">{{ current.etiqueta }}</td>
-                                <td width="30%">
-
-                                    <a href="{{current.archivo.url }}">
-                                        <span>{{current.archivo }}</span>
+                                <td style="vertical-align:middle;">{% if current.etiqueta is None %}
+                                    -------
+                                {% else %}
+                                {{ current.etiqueta }}
+                                {% endif %}</td>
+                                <td style="vertical-align:middle;" width="15%">
+                                    <a href="{% url 'super:file-view' current.id %}" style="display: inline; vertical-align: middle;">
+                                         <i class="material-icons" style="vertical-align: bottom;">visibility</i> {% trans 'View' %}
                                     </a>
+                                    <br>
+                                    <a href="{{current.archivo.url }}" target="_blank" style=" vertical-align: middle;">
+                                         <i class="material-icons"  style="vertical-align: bottom;">archive</i> {% trans "Download" %}
+                                    </a>
+                                    <br>
+                                    <span style="font-size: smaller; color: #767474;">{% trans 'Size' %}: {{current.archivo.size|filesizeformat }}</span>
+                                </td>
+                                <td style="vertical-align:middle;" width="15%">
+                                    <span style="font-size: smaller; color: #767474;">{% trans 'Created' %}</span><br>
+                                     {{current.created_on|timezone:"America/Guatemala"|date:"d-m-Y"}}
+                                    <br>
+                                    <span style="font-size: smaller; color: #767474;">{% trans 'Modify' %}</span><br>
+                                    {{current.modified_on|timezone:"America/Guatemala"|date:"d-m-Y"}}
+                                </td>
+                                <td style="vertical-align:middle;" width="15%">
+                                    <span style="font-size: smaller; color: #767474;">{% trans 'Created' %}</span><br>
+                                     {{current.created_by}}
+                                    <br>
+                                    <span style="font-size: smaller; color: #767474;">{% trans 'Modify' %}</span><br>
+                                    {{current.modified_by}}
                                 </td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+                {% include "partials/pagination.html" %}
             {% else %}
                 <div layout="row" layout-align="center center">
                     <div>
-                        <h3>{% trans 'No hay datos' %} {% trans 'para mostrar' %}</h3>
+                        <h3>{% trans 'No data to display' %}</h3>
                     </div>
                 </div>
             {% endif %}

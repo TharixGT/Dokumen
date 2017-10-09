@@ -2,16 +2,26 @@
 {% load i18n %}
 {% load static %}
 
+{% block title_header %}
+{% trans 'Logout' %}
+{% endblock %}
 
 {% block header %}
 {% endblock %}
 
 {% block container %}
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-    </div>
-        <div class="block-header">
+        <div class="block-header" style="text-align:center;">
+
             <div class="logo">
-                <a href="/"><img class="logo" src="{% static 'img/logo.png' %}" alt="Sin Rubmo"></a>
+                {% if  settings %}
+                    {% if  settings %}
+                    <a href="/"><img class="logo" src="{{ settings.logo.url }}" alt="{{ settings.name }}" style=" width: 322px;"></a>
+                {% else %}
+                    <a href="/"><img class="logo" src="{% static 'img/logo.png' %}" alt="Dokumen" style=" width: 322px;"></a>
+                {% endif %}
+                {% else %}
+                    <a href="/"><img class="logo" src="{% static 'img/logo.png' %}" alt="Dokumen" style=" width: 322px;"></a>
+                {% endif %}
             </div>
         </div>
 
@@ -21,8 +31,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>{% trans "Sign Out" %}</h2>
-                        <div class="msg">{% trans 'Are you sure you want to sign out?' %}</div>
+                        <div class="msg"><strong>{% trans 'Sure you want to leave?' %}</strong></div>
                     </div>
                     <div class="body">
                         <form method="post" action="{% url 'account_logout' %}">
@@ -31,7 +40,7 @@
                                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
                             {% endif %}
                             <div class="col-xs-12 col-sm-12 col-xs-12">
-                                <button class="btn btn-block bg-blue waves-effect"  type="submit">{% trans 'Sign Out' %}</button>
+                                <button class="btn btn-block bg-blue waves-effect"  type="submit">{% trans 'Logout' %}</button>
                             </div>
                             <br>
                             <br>

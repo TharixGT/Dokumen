@@ -58,6 +58,9 @@
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     overflow: hidden; }
+.container-fluid .navbar-brand > img {
+    width: 100px;
+    margin-top: -15px; }
   .navbar .navbar-custom-right-menu {
     float: right; }
   .navbar .navbar-toggle {
@@ -75,7 +78,7 @@
     overflow: visible; }
 
 .ls-closed .sidebar {
-  margin-left: -300px; }
+  margin-left: -350px; }
 
 .ls-closed section.content {
   margin-left: 15px; }
@@ -2235,7 +2238,7 @@
   margin: 5px 0 10px 0; }
   .demo-image-copyright a {
     font-weight: bold;
-    color: #555 !important; }
+    color: #000 !important; }
 
 .demo-tagsinput-area {
   margin-bottom: 50px !important; }
@@ -2362,6 +2365,10 @@
   .navbar > .container-fluid .navbar-brand {
     margin-left: 35px;
     width: 73%; }
+  .container-fluid .navbar-brand > img {
+    width: 98px;
+    margin-top: -16px; }
+
   .navbar .navbar-header {
     display: inline-block;
     margin-bottom: -6px;
@@ -2390,12 +2397,18 @@
 @media (min-width: 768px) and (max-width: 991px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: 20px; } }
+    margin-left: 20px; }
+  .container-fluid .navbar-brand > img {
+    width: 100px;
+    margin-top: -15px; } }
 
 @media (min-width: 992px) and (max-width: 1169px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: 20px; } }
+    margin-left: 20px; }
+  .container-fluid .navbar-brand > img {
+    width: 98px;
+    margin-top: -15px; }}
 
 /* General ===================================== */
 body {
@@ -2438,7 +2451,7 @@ a {
   animation: none !important; }
 
 section.content {
-  margin: 100px 15px 0 315px;
+  margin: 100px 15px 0 415px;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -2986,9 +2999,9 @@ section.content {
     .card .bg-blue-grey .badge,
     .card .bg-black .badge {
       background-color: #fff;
-      color: #555; }
+      color: #000; }
   .card .header {
-    color: #555;
+    color: #000;
     padding: 20px;
     position: relative;
     border-bottom: 1px solid rgba(204, 204, 204, 0.35); }
@@ -3028,7 +3041,7 @@ section.content {
       margin-top: 5px; }
   .card .body {
     font-size: 14px;
-    color: #555;
+    color: #000;
     padding: 20px; }
     .card .body .col-xs-1,
     .card .body .col-sm-1,
@@ -3131,12 +3144,12 @@ section.content {
     .info-box .content .text {
       font-size: 13px;
       margin-top: 11px;
-      color: #555; }
+      color: #000; }
     .info-box .content .number {
       font-weight: normal;
       font-size: 26px;
       margin-top: -4px;
-      color: #555; }
+      color: #000; }
 
 .info-box.hover-zoom-effect .icon {
   overflow: hidden; }
@@ -3209,12 +3222,12 @@ section.content {
     .info-box-2 .content .text {
       font-size: 13px;
       margin-top: 11px;
-      color: #555; }
+      color: #000; }
     .info-box-2 .content .number {
       font-weight: normal;
       font-size: 26px;
       margin-top: -4px;
-      color: #555; }
+      color: #000; }
 
 .info-box-2.hover-zoom-effect .icon {
   overflow: hidden; }
@@ -3289,12 +3302,12 @@ section.content {
     .info-box-3 .content .text {
       font-size: 13px;
       margin-top: 11px;
-      color: #555; }
+      color: #000; }
     .info-box-3 .content .number {
       font-weight: normal;
       font-size: 26px;
       margin-top: -4px;
-      color: #555; }
+      color: #000; }
 
 .info-box-3.hover-zoom-effect .icon i {
   -moz-transition: all 0.3s ease;
@@ -3367,12 +3380,12 @@ section.content {
     .info-box-4 .content .text {
       font-size: 13px;
       margin-top: 11px;
-      color: #555; }
+      color: #000; }
     .info-box-4 .content .number {
       font-weight: normal;
       font-size: 26px;
       margin-top: -4px;
-      color: #555; }
+      color: #000; }
 
 .info-box-4.hover-zoom-effect .icon i {
   -moz-transition: all 0.3s ease;
@@ -3431,7 +3444,7 @@ section.content {
 .alert-warning {
   background-color: #ff9600 !important; }
 
-.alert-danger {
+.alert-error {
   background-color: #fb483a !important; }
 
 .alert-dismissible .close {
@@ -4100,7 +4113,7 @@ section.content {
     margin-top: 0 !important; }
   .bootstrap-select .dropdown-menu li.selected a {
     background-color: #eee !important;
-    color: #555 !important; }
+    color: #000 !important; }
   .bootstrap-select .dropdown-menu .active a {
     background-color: transparent;
     color: #333 !important; }
@@ -4804,7 +4817,7 @@ section.content {
       .panel-group .panel .panel-heading a:hover, .panel-group .panel .panel-heading a:focus, .panel-group .panel .panel-heading a:active {
         text-decoration: none; }
   .panel-group .panel .panel-body {
-    color: #555; }
+    color: #000; }
 
 .panel-group .panel-primary {
   border: 1px solid #baa130; }
@@ -5046,7 +5059,7 @@ section.content {
     font-weight: bold; }
     .input-group .input-group-addon .material-icons {
       font-size: 18px;
-      color: #555; }
+      color: #000; }
   .input-group input[type="text"],
   .input-group .form-control {
     border: none;
@@ -5905,12 +5918,12 @@ fieldset[disabled] .form-control {
   .pagination li a:focus,
   .pagination li a:active {
     background-color: transparent;
-    color: #555; }
+    color: #000; }
 
 .pagination > li > a {
   border: none;
   font-weight: bold;
-  color: #555; }
+  color: #000; }
 
 .pagination > li:first-child > a,
 .pagination > li:last-child > a {
@@ -6711,7 +6724,7 @@ fieldset[disabled] .form-control {
     overflow: visible; }
 
 .ls-closed .sidebar {
-  margin-left: -300px; }
+  margin-left: -350px; }
 
 .ls-closed section.content {
   margin-left: 15px; }
@@ -7509,7 +7522,7 @@ fieldset[disabled] .form-control {
   transition: all 0.5s;
   font-family: 'Muli', Arial, sans-serif;;
   background: #fdfdfd;
-  width: 300px;
+  width: 350px;
   overflow: hidden;
   display: inline-block;
   height: calc(100vh - 70px);
@@ -7610,7 +7623,7 @@ fieldset[disabled] .form-control {
         font-weight: 600;
         padding: 8px 16px; }
       .sidebar .menu .list i.material-icons {
-        margin-top: 4px; }
+        margin-top: 0px; }
       .sidebar .menu .list .menu-toggle:after, .sidebar .menu .list .menu-toggle:before {
         position: absolute;
         top: calc(50% - 14px);
@@ -7652,12 +7665,12 @@ fieldset[disabled] .form-control {
         -webkit-transform: scale(1);
         transform: scale(1); }
       .sidebar .menu .list a {
-        color: #747474;
+        color: #000000;
         position: relative;
         display: inline-flex;
         vertical-align: middle;
         width: 100%;
-        padding: 10px 13px; }
+        padding: 1px 3px; }
         .sidebar .menu .list a:hover, .sidebar .menu .list a:active, .sidebar .menu .list a:focus {
           text-decoration: none !important; }
         .sidebar .menu .list a small {
@@ -7665,10 +7678,10 @@ fieldset[disabled] .form-control {
           top: calc(50% - 7.5px);
           right: 15px; }
         .sidebar .menu .list a span {
-          margin: 7px 0 7px 12px;
-          color: #333;
+          margin: 7px 0 7px 6px;
+          color: #000;
           font-weight: bold;
-          font-size: 14px;
+          font-size: 13px;
           overflow: hidden; }
       .sidebar .menu .list .ml-menu {
         list-style: none;
@@ -7677,11 +7690,11 @@ fieldset[disabled] .form-control {
         .sidebar .menu .list .ml-menu span {
           font-weight: normal;
           font-size: 14px;
-          margin: 3px 0 1px 6px; }
+          margin: 3px 28px 1px 6px; }
         .sidebar .menu .list .ml-menu li a {
-          padding-left: 55px;
-          padding-top: 7px;
-          padding-bottom: 7px; }
+          padding-left: 10px;
+          padding-top: 0px;
+          padding-bottom: 0px; }
         .sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle) {
           font-weight: 600;
           margin-left: 5px; }
@@ -7691,13 +7704,31 @@ fieldset[disabled] .form-control {
             position: relative;
             font-size: 21px;
             height: 20px;
-            top: -5px;
+            top: -2px;
+            color: #353535;
             right: 0px; }
         .sidebar .menu .list .ml-menu li .ml-menu li a {
-          padding-left: 80px; }
+          padding-left: 20px; }
         .sidebar .menu .list .ml-menu li .ml-menu .ml-menu li a {
-          padding-left: 95px; }
-
+          padding-left: 30px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 40px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 50px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 60px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 70px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 80px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 90px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 100px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 110px; }
+        .sidebar .menu .list .ml-menu li .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu .ml-menu li a {
+          padding-left: 120px; }
 .right-sidebar {
   width: 280px;
   height: calc(100vh - 70px);
@@ -7760,7 +7791,7 @@ fieldset[disabled] .form-control {
   margin: 5% auto;
   overflow-x: hidden; }
   .login-page .login-box .msg {
-    color: #555;
+    color: #000;
     margin-bottom: 30px;
     text-align: center; }
   .login-page .login-box a {
@@ -7790,7 +7821,7 @@ fieldset[disabled] .form-control {
   margin: 5% auto;
   overflow-x: hidden; }
   .signup-page .signup-box .msg {
-    color: #555;
+    color: #000;
     margin-bottom: 30px;
     text-align: center; }
   .signup-page .signup-box a {
@@ -7820,7 +7851,7 @@ fieldset[disabled] .form-control {
   margin: 5% auto;
   overflow-x: hidden; }
   .fp-page .fp-box .msg {
-    color: #555;
+    color: #000;
     margin-bottom: 30px;
     text-align: center; }
   .fp-page .fp-box a {

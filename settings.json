@@ -1,0 +1,1 @@
+[{"model": "common.configuracion", "pk": 1, "fields": {"created": "2017-11-24T20:17:52.567Z", "modified": "2017-12-14T19:47:01.725Z", "name": "Gestor Documental", "logo": "logo.png", "white_logo": "logo.png", "help_file": ""}}]

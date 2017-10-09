@@ -1,0 +1,8 @@
+{% load carpetas_extras %}
+{% load i18n %}
+
+{% if subend %}
+    <a href="{% url 'super:folder-view' id %}" class="">
+{% else %}
+    <a href="#" class="menu-toggle">
+{% endif %}
