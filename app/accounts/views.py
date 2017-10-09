@@ -1,56 +1,83 @@
 """View."""
-from django.views.generic.base import TemplateResponseMixin, View
-from allauth.account import app_settings
-from allauth.account.adapter import get_adapter
-from allauth.account.utils import perform_login, url_str_to_user_pk
-from django.http import Http404
-from allauth.account.models import EmailConfirmation
+from allauth.account.views import PasswordChangeView, LogoutView, LoginView, \
+    PasswordResetView, PasswordResetDoneView, AccountInactiveView, \
+    EmailVerificationSentView, PasswordResetFromKeyView, \
+    PasswordResetFromKeyDoneView, EmailView, ConfirmEmailView
+from django.contrib.auth.decorators import login_required
+from app.super import mixins
 
 
-class ConfirmEmailView(TemplateResponseMixin, View):
-    """Confirm Email View."""
+class CustomPasswordChangeView(mixins.MenuMixin, PasswordChangeView):
+    """CustomPasswordChangeView."""
 
-    template_name = "account/email_confirm." + app_settings.TEMPLATE_EXTENSION
+custom_password_change = login_required(CustomPasswordChangeView.as_view())
 
-    def login_on_confirm(self, confirmation):
-        """Login on confrim."""
-        user_pk = None
-        user_pk_str = get_adapter(self.request).unstash_user(self.request)
-        if user_pk_str:
-            user_pk = url_str_to_user_pk(user_pk_str)
-        user = confirmation.email_address.user
-        if user_pk == user.pk and self.request.user.is_anonymous():
-            return perform_login(self.request,
-                                 user,
-                                 app_settings.EmailVerificationMethod.NONE,
-                                 # passed as callable, as this method
-                                 # depends on the authenticated state
-                                 redirect_url=self.get_redirect_url)
 
-        return None
+class CustomLogoutView(mixins.MenuMixin, LogoutView):
+    """CustomLogoutView."""
 
-    def get_object(self, queryset=None):
-        """Get object."""
-        if queryset is None:
-            queryset = self.get_queryset()
-        try:
-            return queryset.get(key=self.kwargs["key"].lower())
-        except EmailConfirmation.DoesNotExist:
-            raise Http404()
+custom_logout = login_required(CustomLogoutView.as_view())
 
-    def get_queryset(self):
-        """Get queryset."""
-        qs = EmailConfirmation.objects.all_valid()
-        qs = qs.select_related("email_address__user")
-        return qs
 
-    def get_context_data(self, **kwargs):
-        """Get context data."""
-        ctx = kwargs
-        ctx["confirmation"] = self.object
-        return ctx
+class CustomLoginView(mixins.SettingsMixin, LoginView):
+    """CustomLoginView."""
 
-    def get_redirect_url(self):
-        """Get redirect url."""
-        return get_adapter(self.request).get_email_confirmation_redirect_url(
-            self.request)
+custom_login = CustomLoginView.as_view()
+
+
+class CustomPasswordResetView(mixins.SettingsMixin, PasswordResetView):
+    """CustomPasswordResetView."""
+
+custom_password_reset = CustomPasswordResetView.as_view()
+
+
+class CustomPasswordResetDoneView(mixins.SettingsMixin, PasswordResetDoneView):
+    """CustomPasswordResetDoneView."""
+
+custom_password_reset_done = CustomPasswordResetDoneView.as_view()
+
+
+class CustomInactiveView(mixins.SettingsMixin, AccountInactiveView):
+    """CustomInactiveView."""
+
+custom_inactive = CustomInactiveView.as_view()
+
+
+class CustomEmailVerificationSentViewView(
+        mixins.SettingsMixin, EmailVerificationSentView):
+    """CustomEmailVerificationSentViewView."""
+
+custom_inactive = CustomEmailVerificationSentViewView.as_view()
+
+
+class CustomPasswordResetFromKeyViewViewView(
+        mixins.SettingsMixin, PasswordResetFromKeyView):
+    """CustomPasswordResetFromKeyViewViewView."""
+
+custom_password_reset_from_key = CustomPasswordResetFromKeyViewViewView.as_view()
+
+
+class CustomPasswordResetFromKeyDoneView(
+        mixins.SettingsMixin, PasswordResetFromKeyDoneView):
+    """CustomPasswordResetFromKeyDoneView."""
+
+custom_password_reset_from_key_done = CustomPasswordResetFromKeyDoneView.as_view()
+
+
+class CustomEmailView(mixins.SettingsMixin, EmailView):
+    """CustomEmailView."""
+
+custom_email = login_required(CustomEmailView.as_view())
+
+
+class CustomEmailVerificationSentView(
+        mixins.SettingsMixin, EmailVerificationSentView):
+    """CustomEmailVerificationSentView."""
+
+custom_email_verification_sent = CustomEmailVerificationSentView.as_view()
+
+
+class CustomConfirmEmailView(mixins.SettingsMixin, ConfirmEmailView):
+    """CustomConfirmEmailView."""
+
+custom_confirm_email = login_required(CustomConfirmEmailView.as_view())

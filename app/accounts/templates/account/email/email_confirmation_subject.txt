@@ -1,4 +1,4 @@
 {% load i18n %}
 {% autoescape off %}
-¡BIENVENIDO A TAXIBUSNERJA.COM!
+¡Bienvenido a {{ settings.name }}!
 {% endautoescape %}

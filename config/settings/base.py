@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import sys
+
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -30,7 +32,7 @@ BASE_DIR = os.path.dirname(
 SECRET_KEY = os.environ.get('SECRET_KEY', 'cotizador')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG', False))
+DEBUG = True
 TEST = bool(os.environ.get('DEBUG', False))
 
 DOMAIN = os.environ.get('DOMAIN')
@@ -53,7 +55,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     'django.contrib.humanize',
-
+    'django.contrib.admindocs',
 ]
 
 THIRD_PARTY_APPS = [
@@ -62,6 +64,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     'colorfield',
+    'mail_templated',
 ]
 
 LOCAL_APPS = [
@@ -81,6 +84,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app.common.middleware.Middleware404',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -105,7 +110,8 @@ TEMPLATES = [
             ],
             'libraries':{
                 'navbar_tags': 'app.super.templatetags.navbar_tags',
-
+                'carpetas_extras': 'app.super.templatetags.carpetas_extras',
+                'pagination_tags': 'app.super.templatetags.pagination_tags'
             }
         },
     },
@@ -133,7 +139,6 @@ DATABASES = {
 
 LANGUAGES = [
     ('es', _('Spanish')),
-    ('en', _('English')),
 ]
 
 LOCALE_PATHS = ['locale']
@@ -177,26 +182,25 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_AUTHENTICATION_METHOD = ("email")
-ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = None
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_USERNAME_FIELD = 'email'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_VERIFICATION = None
-
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # One month
 
 
 ACCOUNT_FORMS = {
     "login": "app.accounts.forms.CustomLoginForm",
-    "signup": "app.accounts.forms.CustomSignupForm",
     "reset_password": "app.accounts.forms.CustomResetPasswordForm",
     "reset_password_from_key": "app.accounts.forms.CustomResetPasswordKeyForm",
     "change_password": "app.accounts.forms.CustomChangePasswordForm",
 }
-LOGIN_REDIRECT_URL = "/super/"
-ACCOUNT_LOGOUT_REDIRECT_URL = "/super/"
-LOGOUT_REDIRECT_URL = "/super/"
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
 
 
@@ -217,7 +221,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = os.environ.get('STATIC_URL')
 
@@ -229,6 +233,14 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, "locale"),
 )
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
 # DJANGO REST FRAMEWORK
 
 '''
@@ -236,9 +248,7 @@ EMAIL CONFIG
 '''
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
-
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
-
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')

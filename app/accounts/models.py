@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from managers import UserManager
+import uuid
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -38,30 +39,33 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USER = 'user'
     ADMIN = 'admin'
+    MANAGER = 'manager'
     CHOISE_USER_TYPE = (
         (USER, _('User')),
         (ADMIN, _('Admin')),
+        (MANAGER, _('Manager')),
     )
 
     REQUIRED_FIELDS = ('first_name', 'last_name')
     USERNAME_FIELD = 'email'
 
     user_type = models.CharField(
-        max_length=5, blank=True, null=True,
+        max_length=7, blank=False, null=False,
         choices=CHOISE_USER_TYPE,
-        verbose_name=_('User type')
+        verbose_name=_('Type')
     )
 
     email = models.EmailField(unique=True, verbose_name=_('Email'))
     first_name = models.CharField(max_length=50, verbose_name=_('First name'))
     last_name = models.CharField(max_length=50, verbose_name=_('Last name'))
     is_active = models.BooleanField(default=False, verbose_name=_('Is active'))
-
+    role = models.ForeignKey(
+        'Role', null=True, blank=True, verbose_name=_('Role'))
     created = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name=_('Created'))
     modified = models.DateTimeField(
         auto_now=True, editable=False, verbose_name=_('Modified'))
-
+    force_change_password = models.BooleanField(default=True)
     objects = UserManager()
 
     class Meta:
@@ -112,6 +116,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Return super."""
         return self.user_type == self.ADMIN
 
+    @property
+    def is_manager(self):
+        """Return manager."""
+        return self.user_type == self.MANAGER
+
     def get_full_name(self):
         """Full name of user.
 
@@ -119,3 +128,78 @@ class User(AbstractBaseUser, PermissionsMixin):
             String: u'%s %s' % (self.first_name, self.last_name)
         """
         return u'%s %s' % (self.first_name, self.last_name)
+
+    @staticmethod
+    def get_or_register(email, first_name, last_name, user_type):
+        """Get or Register user.
+
+        Args:
+            email (str): Email of user
+            first_name (str): First name
+            last_name (str): Last name
+
+        Returns:
+            User: user
+        """
+        password = uuid.uuid4().hex[:6].upper()
+        user = None
+        if not User.objects.filter(email=email).exists():
+            user = User.objects.create(
+                email=email,
+                first_name=first_name,
+                last_name=last_name,
+                user_type=user_type,
+                is_active=True)
+            user.set_password(password)
+            user.save()
+        else:
+            user = User.objects.get(email=email)
+            user.save()
+            password = None
+        return user, password
+
+
+class Role(models.Model):
+    """Archivo.
+
+    Attributes:
+        carpetas (TYPE): Description
+        id (TYPE): Description
+        nombre (TYPE): Description
+    """
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(
+        max_length=75, null=False,
+        blank=False, verbose_name=_('Name'))
+    folder = models.ManyToManyField(
+        'common.carpeta', verbose_name=_('Folder'),
+        help_text=_('select the folders you want to exclude'))
+    created = models.DateTimeField(
+        auto_now_add=True, editable=False, verbose_name=_('Created'))
+    modified = models.DateTimeField(
+        auto_now=True, editable=False, verbose_name=_('Modify'))
+
+    class Meta:
+        """Meta.
+
+        Attributes:
+            db_table (str): Description
+            default_related_name (str): Description
+            verbose_name (TYPE): Description
+            verbose_name_plural (TYPE): Description
+
+        """
+
+        verbose_name = _('Role')
+        verbose_name_plural = _('Roles')
+        default_related_name = 'role'
+        db_table = 'role'
+
+    def __unicode__(self):
+        """Unicode.
+
+        Returns:
+            TYPE: Description
+        """
+        return str(self.name)

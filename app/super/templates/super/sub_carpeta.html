@@ -1,0 +1,17 @@
+{% load carpetas_extras %}
+{% load i18n %}
+
+<ul class="ml-menu">
+{% for current in subs %}
+    <li style="background:{{ current.color }}" class="{% active_carpetas current carpetasTitulo arrayTitulo%}">
+        {% end_carpetas current  idRole%}
+            <i class="material-icons">{{ current.icono }}</i>
+            <span>{{ current.titulo }}</span>
+        </a>
+        {% sub_carpetas current carpetasTitulo arrayTitulo idRole %}
+    </li>
+{% endfor %}
+</ul>
+
+
+

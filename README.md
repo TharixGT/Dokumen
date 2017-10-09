@@ -1,4 +1,5 @@
-# ManejadorDocumentos
+# Dokumen
+Sistema Open Source de gestión de documentos consiste en controlar de modo eficiente y sistematico los documentos.
 
 ## Development tools
 
@@ -17,7 +18,7 @@ Create a `.env` or cp `cp .env.example .env` file with the below content:
 ```bash
 
 DJANGO_SETTINGS_MODULE="config.settings.dev"
-SECRET_KEY="dbc#k91@p(6(!42_^cf)-++)*9l3q55$%q23(ldby8*-f#@_vh"
+SECRET_KEY=""
 DB_NAME=""
 DB_USER=""
 DB_PASSWORD=""
@@ -35,7 +36,7 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = ""
 
-BROKER_URL='redis://localhost:6379/0'
-BROKER_RESULT_BACKEND='redis://localhost:6379/0'
 
 ```
+
+By: Tharix
