@@ -1,0 +1,9 @@
+{% load carpetas_extras %}
+{% load i18n %}
+
+{% if items_menu %}
+    {% for item in arrayTitulo  %}
+        {% if item == items_menu %}active{% endif %}
+
+    {% endfor %}
+{% endif %}

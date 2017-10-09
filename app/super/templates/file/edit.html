@@ -1,0 +1,81 @@
+{% extends 'super/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load tz %}
+
+{% block title_header %}
+{% trans 'Update' %} {% trans 'File' %}
+{% endblock %}
+
+
+{% block container %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_utils %}
+{% load crispy_forms_field %}
+
+{% block extra_head %}
+<script src="{% static 'js/select2.min.js' %}"></script>
+<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+        <div class="header">
+            <h2>
+               {% trans 'Update' %} {% trans 'File' %}
+            </h2>
+            <ul class="header-dropdown m-r--5">
+                <li class="dropdown">
+                    <a href="{% url 'super:file-new'%}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" data-placement="left" title=""data-original-title="{% trans 'New' %}">
+                        <i class="material-icons">add_circle</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="body">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="panel-body">
+                    {% crispy form %}
+                    <div align="">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="3">
+                                    {% trans 'History' %}
+                                    </th>
+                                </tr>
+                              <tr>
+                                <th></th>
+                                <th>{% trans 'Created' %}</th>
+                                <th>{% trans 'Modify' %}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>{% trans 'User' %}</strong><br> <strong>{% trans 'Date time' %}:</strong></td>
+                                    <td>{{data_file_view.created_by}} <br>
+                                    {{data_file_view.created_on|timezone:"America/Guatemala"|date:"d-m-Y h:i a" }} </td>
+                                    <td>{{data_file_view.modified_by}} <br>
+                                    {{data_file_view.modified_on|timezone:"America/Guatemala"|date:"d-m-Y h:i a" }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+                </div>
+                <div class="footer">
+                    <input name="save" class="btn btn-success" type="submit" value="{% trans 'Save' %}" />
+                    <input name="save-and-add" class="btn btn-success" type="submit" value="{% trans 'Save and add another' %}" />
+                    <a onclick="window.history.back()" class="btn btn-default waves-effect">{% trans "Cancel" %}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function($) {
+        $('select').select2();
+    })(jQuery || django.jQuery);
+</script>
+{% endblock %}

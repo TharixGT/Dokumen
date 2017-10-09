@@ -1,0 +1,103 @@
+
+{% extends 'super/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load pagination_tags %}
+{% load tz %}
+
+{% block title_header %}
+{% trans 'Files' %}
+{% endblock %}
+
+{% block container %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+        <div class="header">
+            <h2>
+                {% trans "Files" %}
+            </h2>
+            <ul class="header-dropdown m-r--5">
+                <li class="dropdown">
+                    <a href="{% url 'super:file-new'%}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" data-placement="left" title=""data-original-title="{% trans 'New' %}">
+                        <i class="material-icons">add_circle</i>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+        <div class= "body table-responsive">
+        <form method="GET" action="{% url 'super:file-search' %}" id="search_text" style="position: relative; display: inline-flex; vertical-align: middle; width: 100%; padding: 10px 13px;">
+            <input id="search" name="search" type="text" class="form-control" placeholder="{% trans 'Search' %}" value="{{search_text}}">
+            <button type="submit" form="search_text" style="background: #baa130; margin-left: 9px;" class="btn btn-circle waves-effect waves-circle waves-float" data-toggle="tooltip" data-placement="top" title=""data-original-title="{% trans 'Search' %}">
+                <i class="material-icons">search</i>
+            </button>
+            <a href="{% url 'super:file-list'%}" class="btn btn-default btn-circle waves-effect waves-circle waves-float" role="button" aria-haspopup="true" aria-expanded="false" style="margin-left: 10px;" data-toggle="tooltip" data-placement="top" title=""data-original-title="{% trans 'Clear' %}">
+                <i class="material-icons">clear</i>
+            </a>
+        </form>
+            {% if file_data %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="text-transform: uppercase;">{% trans 'Name' %}</th>
+                            <th style="text-transform: uppercase;">{% trans 'Folder' %}</th>
+                            <th style="text-transform: uppercase;">{% trans 'File' %}</th>
+                            <th style="text-transform: uppercase;">{% trans 'Actions' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for current in file_data %}
+                            <tr>
+                                <td style="vertical-align:middle;">{{ current.nombre }} <br>
+                                    <span style="font-size: smaller; color: #767474;">{% trans 'Created' %}
+                                     {{current.created_on|timezone:"America/Guatemala"|date:"d-m-Y"}}</span>
+                                    <br>
+                                    <span style="font-size: smaller; color: #767474;">{% trans 'Modify' %}
+                                    {{current.modified_on|timezone:"America/Guatemala"|date:"d-m-Y"}}</span>
+                                </td>
+                                <td style="vertical-align:middle;">{{ current.carpetas }}</td>
+                                <td style="vertical-align:middle;" width="15%">
+                                    {% if current.archivo|default:"--"  == "--" %}
+                                    -----
+                                    {% else %}
+                                        <a href="{% url 'super:file-view' current.id %}" style="display: inline; vertical-align: middle;">
+                                         <i class="material-icons" style="vertical-align: bottom;">visibility</i> {% trans 'View' %}
+                                        </a>
+                                        <br>
+                                        <a href="{{current.archivo.url }}" target="_blank" style=" vertical-align: middle;">
+                                             <i class="material-icons"  style="vertical-align: bottom;">archive</i> {% trans "Download" %}
+                                        </a>
+                                        <br>
+                                        <span style="font-size: smaller; color: #767474;">{% trans 'Size' %}: {{current.archivo.size|filesizeformat }}</span>
+                                    {% endif%}
+                                </td>
+                                <td style="vertical-align:middle;" width="25%">
+
+                                    <a href="{% url 'super:file-edit' current.id %}" class="btn btn-primary btn-xs waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">mode_edit</i>
+                                        <span> {% trans 'Update' %}</span>
+                                    </a>
+
+                                    <a href="{% url 'super:file-delete' current.id %}" class="btn bg-red  btn-xs waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">delete_forever</i>
+                                        <span> {% trans 'Delete' %}</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% include "partials/pagination.html" %}
+
+            {% else %}
+                <div layout="row" layout-align="center center">
+                    <div>
+                        <h3>{% trans 'No data to display' %}</h3>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'super/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title_header %}
+{% trans 'New' %} {% trans 'User' %}
+{% endblock %}
+
+{% block container %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_utils %}
+{% load crispy_forms_field %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+        <div class="header">
+            <h2>
+               {% trans 'New' %} {% trans 'User' %}
+            </h2>
+            <ul class="header-dropdown m-r--5">
+                <li class="dropdown">
+                    <a href="{% url 'super:user-new'%}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" data-placement="left" title=""data-original-title="{% trans 'New' %}">
+                        <i class="material-icons">add_circle</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="body">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="panel-body">
+                    {% crispy form %}
+
+                </div>
+                <div class="footer">
+                    <input name="save" class="btn btn-success" type="submit" value="{% trans 'Save' %}" />
+                    <input name="save-and-add" class="btn btn-success" type="submit" value="{% trans 'Save and add another' %}" />
+                    <a class="btn btn-default waves-effect" href="{% url 'super:user-list' %}">{% trans 'Return' %}</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

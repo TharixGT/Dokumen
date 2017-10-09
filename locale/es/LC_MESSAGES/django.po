@@ -1,0 +1,798 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-19 21:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/accounts/models.py:44 app/accounts/models.py:80
+#: app/super/templates/accounts/create.html:6
+#: app/super/templates/accounts/create.html:18
+#: app/super/templates/accounts/delete.html:6
+#: app/super/templates/accounts/delete.html:13
+#: app/super/templates/accounts/edit.html:6
+#: app/super/templates/accounts/edit.html:18
+#: app/super/templates/accounts/list.html:60
+#: app/super/templates/file/edit.html:55
+#: app/super/templates/super/results.html:31
+#: app/super/templates/super/view-file.html:28
+#: app/super/templates/super/view.html:39
+msgid "User"
+msgstr "Usuario"
+
+#: app/accounts/models.py:45 app/super/templates/accounts/list.html:58
+msgid "Admin"
+msgstr "Administrador"
+
+#: app/accounts/models.py:46 app/super/templates/accounts/list.html:62
+msgid "Manager"
+msgstr "Gestor"
+
+#: app/accounts/models.py:55 app/super/templates/accounts/list.html:42
+msgid "Type"
+msgstr "Tipo"
+
+#: app/accounts/models.py:58 app/super/templates/accounts/list.html:40
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: app/accounts/models.py:59
+msgid "First name"
+msgstr "Nombre"
+
+#: app/accounts/models.py:60
+msgid "Last name"
+msgstr "Apellido"
+
+#: app/accounts/models.py:61
+msgid "Is active"
+msgstr "Está activo"
+
+#: app/accounts/models.py:63 app/accounts/models.py:194
+#: app/super/templates/role/create.html:6
+#: app/super/templates/role/create.html:18
+#: app/super/templates/role/delete.html:6
+#: app/super/templates/role/delete.html:13 app/super/templates/role/edit.html:6
+#: app/super/templates/role/edit.html:18
+#: app/super/templates/super/base.html:102
+msgid "Role"
+msgstr "Rol"
+
+#: app/accounts/models.py:65 app/accounts/models.py:179 app/common/models.py:50
+#: app/super/templates/file/edit.html:49 app/super/templates/file/list.html:53
+#: app/super/templates/super/results.html:56
+#: app/super/templates/super/results.html:63
+#: app/super/templates/super/view-file.html:42
+#: app/super/templates/super/view-file.html:49
+#: app/super/templates/super/view.html:63
+#: app/super/templates/super/view.html:70
+msgid "Created"
+msgstr "Creado"
+
+#: app/accounts/models.py:67
+msgid "Modified"
+msgstr "Modificado"
+
+#: app/accounts/models.py:81 app/super/templates/accounts/list.html:7
+#: app/super/templates/accounts/list.html:15
+#: app/super/templates/super/base.html:122
+msgid "Users"
+msgstr "Usuarios"
+
+#: app/accounts/models.py:174 app/common/models.py:79 app/common/models.py:140
+#: app/common/models.py:190 app/common/models.py:246
+#: app/super/templates/accounts/list.html:39
+#: app/super/templates/file/list.html:43
+#: app/super/templates/folder/view.html:35
+#: app/super/templates/link/list.html:32 app/super/templates/role/list.html:32
+#: app/super/templates/super/results.html:26
+#: app/super/templates/super/view.html:35
+msgid "Name"
+msgstr "Nombre"
+
+#: app/accounts/models.py:176 app/common/models.py:102 app/common/models.py:146
+#: app/super/templates/file/list.html:44
+#: app/super/templates/folder/create.html:6
+#: app/super/templates/folder/create.html:24
+#: app/super/templates/folder/delete.html:6
+#: app/super/templates/folder/delete.html:13
+#: app/super/templates/folder/edit.html:6
+#: app/super/templates/folder/edit.html:24
+#: app/super/templates/folder/view.html:9
+#: app/super/templates/super/results.html:28
+#: app/super/templates/super/view.html:9
+msgid "Folder"
+msgstr "Carpeta"
+
+#: app/accounts/models.py:177
+msgid "select the folders you want to exclude"
+msgstr ""
+"Seleccione las carpetas que desea excluir o si son varias presione 'Ctrl +' "
+"las carpetas a excluir"
+
+#: app/accounts/models.py:181 app/common/models.py:52
+#: app/super/templates/file/edit.html:50 app/super/templates/file/list.html:56
+#: app/super/templates/super/results.html:59
+#: app/super/templates/super/results.html:66
+#: app/super/templates/super/view-file.html:45
+#: app/super/templates/super/view-file.html:52
+#: app/super/templates/super/view.html:66
+#: app/super/templates/super/view.html:73
+msgid "Modify"
+msgstr "Modificado"
+
+#: app/accounts/models.py:195 app/super/templates/role/list.html:7
+#: app/super/templates/role/list.html:16
+msgid "Roles"
+msgstr "Roles"
+
+#: app/accounts/templates/account/account_inactive.html:9
+msgid "Account Inactive"
+msgstr "Cuenta Inactiva"
+
+#: app/accounts/templates/account/email.html:5
+msgid "Account"
+msgstr "Cuenta"
+
+#: app/accounts/templates/account/email.html:8
+#: app/accounts/templates/account/login.html:42
+msgid "E-mail Addresses"
+msgstr "Dirección de correo electrónico"
+
+#: app/accounts/templates/account/email.html:10
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: app/accounts/templates/account/email.html:24
+msgid "Verified"
+msgstr "Verificado"
+
+#: app/accounts/templates/account/email.html:26
+msgid "Unverified"
+msgstr "No verificado"
+
+#: app/accounts/templates/account/email.html:28
+msgid "Primary"
+msgstr "Principal"
+
+#: app/accounts/templates/account/email.html:34
+msgid "Make Primary"
+msgstr "Hacer principal"
+
+#: app/accounts/templates/account/email.html:35
+msgid "Re-send Verification"
+msgstr "Re-enviar verificación"
+
+#: app/accounts/templates/account/email.html:36
+msgid "Remove"
+msgstr "Eliminar"
+
+#: app/accounts/templates/account/email.html:43
+msgid "Warning:"
+msgstr "Alerta:"
+
+#: app/accounts/templates/account/email.html:43
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: app/accounts/templates/account/email.html:48
+msgid "Add E-mail Address"
+msgstr "Agregar dirección de correo electrónico"
+
+#: app/accounts/templates/account/email.html:53
+msgid "Add E-mail"
+msgstr "Agregar correo electrónico"
+
+#: app/accounts/templates/account/email.html:62
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: app/accounts/templates/account/email/password_reset_key_subject.txt:3
+msgid "Restablecer Contraseña"
+msgstr ""
+
+#: app/accounts/templates/account/email_confirm.html:34
+#, python-format
+msgid ""
+"Este enlace de confirmación por correo electrónico expiró o no es válido. "
+"Por favor <a href=\"%(email_url)s\">realize una nueva solicitud de "
+"confirmación por correo electrónicot</a>."
+msgstr ""
+
+#: app/accounts/templates/account/email_confirmed.html:6
+#: app/accounts/templates/account/email_confirmed.html:11
+msgid "Confirm E-mail Address"
+msgstr "Confirmar dirección de correo electrónico"
+
+#: app/accounts/templates/account/email_confirmed.html:15
+#, python-format
+msgid ""
+"You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-"
+"mail address for user %(user_display)s."
+msgstr ""
+
+#: app/accounts/templates/account/login.html:6
+#: app/accounts/templates/account/login.html:26
+#: app/accounts/templates/account/login.html:62
+#: app/accounts/templates/account/password_reset.html:52
+msgid "Login"
+msgstr "Inicio de sesión"
+
+#: app/accounts/templates/account/login.html:53
+msgid "Password"
+msgstr "Contraseña"
+
+#: app/accounts/templates/account/login.html:69
+msgid "Forgot your password?"
+msgstr "¿Has olvidado tu contraseña?"
+
+#: app/accounts/templates/account/logout.html:6
+#: app/accounts/templates/account/logout.html:43
+#: app/super/templates/super/base.html:161
+msgid "Logout"
+msgstr "Salir"
+
+#: app/accounts/templates/account/logout.html:34
+msgid "Sure you want to leave?"
+msgstr "¿Seguro que desea salir?"
+
+#: app/accounts/templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: app/accounts/templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: app/accounts/templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: app/accounts/templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: app/accounts/templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: app/accounts/templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: app/accounts/templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr ""
+
+#: app/accounts/templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr ""
+
+#: app/accounts/templates/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: app/accounts/templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: app/accounts/templates/account/password_change.html:16
+msgid "Change Password"
+msgstr "Cambio de Contraseña"
+
+#: app/accounts/templates/account/password_change.html:28
+#: app/accounts/templates/account/password_reset_from_key.html:37
+#: app/super/templates/accounts/password_change.html:29
+msgid "Save password"
+msgstr "Guardar contraseña"
+
+#: app/accounts/templates/account/password_change.html:30
+#: app/super/templates/accounts/create.html:37
+#: app/super/templates/accounts/edit.html:36
+#: app/super/templates/accounts/password_change.html:30
+#: app/super/templates/super/view-file.html:62
+msgid "Return"
+msgstr "Regresar"
+
+#: app/accounts/templates/account/password_reset.html:10
+#: app/accounts/templates/account/password_reset.html:24
+#: app/accounts/templates/account/password_reset_done.html:7
+#: app/accounts/templates/account/password_reset_from_key.html:26
+msgid "Reset password"
+msgstr "Reiniciar contraseña"
+
+#: app/accounts/templates/account/password_reset_from_key.html:7
+#: app/accounts/templates/account/password_reset_from_key.html:21
+#: app/super/templates/accounts/list.html:78
+#: app/super/templates/accounts/password_change.html:6
+#: app/super/templates/accounts/password_change.html:18
+#: app/super/templates/super/base.html:94
+msgid "Change password"
+msgstr "Cambio de contraseña"
+
+#: app/accounts/templates/account/password_reset_from_key.html:21
+msgid "Invalid token"
+msgstr "Token invalido"
+
+#: app/accounts/templates/account/password_set.html:5
+#: app/accounts/templates/account/password_set.html:8
+#: app/accounts/templates/account/password_set.html:13
+msgid "Set Password"
+msgstr ""
+
+#: app/accounts/templates/account/signup.html:23
+#: app/accounts/templates/account/signup.html:40
+msgid "Sign Up"
+msgstr ""
+
+#: app/accounts/templates/account/signup.html:48
+msgid "Already you registered?"
+msgstr ""
+
+#: app/accounts/templates/account/signup.html:50
+msgid "sign in"
+msgstr ""
+
+#: app/accounts/templates/account/signup_closed.html:5
+#: app/accounts/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: app/accounts/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: app/accounts/templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr ""
+
+#: app/accounts/templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: app/accounts/templates/account/verification_sent.html:17
+msgid ""
+"Le hemos enviado un correo electrónico para su verificación. Siga el enlace "
+"provisto para finalizar el proceso de registro. Por favor contáctenos si no "
+"lo recibe en unos minutos."
+msgstr ""
+
+#: app/accounts/templates/account/verified_email_required.html:5
+#: app/accounts/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: app/accounts/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: app/accounts/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: app/accounts/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: app/common/models.py:81
+msgid "Parent"
+msgstr "Padre"
+
+#: app/common/models.py:84 app/common/models.py:143
+msgid "Tag"
+msgstr "Etiquetas"
+
+#: app/common/models.py:86 app/common/models.py:250
+msgid "Color"
+msgstr "Color"
+
+#: app/common/models.py:89 app/common/models.py:253
+msgid "Icon"
+msgstr "Icono"
+
+#: app/common/models.py:103 app/super/templates/folder/list.html:8
+#: app/super/templates/folder/list.html:17
+#: app/super/templates/super/base.html:136
+#: app/super/templates/super/base.html:152
+msgid "Folders"
+msgstr "Carpetas"
+
+#: app/common/models.py:149 app/common/models.py:162
+#: app/super/templates/file/create.html:6
+#: app/super/templates/file/create.html:24
+#: app/super/templates/file/delete.html:6
+#: app/super/templates/file/delete.html:13 app/super/templates/file/edit.html:7
+#: app/super/templates/file/edit.html:25 app/super/templates/file/list.html:45
+#: app/super/templates/folder/view.html:37
+#: app/super/templates/super/results.html:29
+#: app/super/templates/super/view-file.html:9
+#: app/super/templates/super/view.html:37
+msgid "File"
+msgstr "Archivo"
+
+#: app/common/models.py:163 app/super/templates/file/list.html:9
+#: app/super/templates/file/list.html:18
+#: app/super/templates/folder/list.html:92
+#: app/super/templates/super/base.html:129
+#: app/super/templates/super/base.html:145
+msgid "Files"
+msgstr "Archivos"
+
+#: app/common/models.py:194
+msgid "Logo"
+msgstr "Logo"
+
+#: app/common/models.py:198
+msgid "White logo"
+msgstr "Logo en blanco"
+
+#: app/common/models.py:202
+msgid "Help file"
+msgstr "Archivo de ayuda"
+
+#: app/common/models.py:215
+msgid "Setting"
+msgstr "Configuración"
+
+#: app/common/models.py:216 app/super/templates/settings/edit.html:7
+#: app/super/templates/settings/edit.html:19
+#: app/super/templates/super/base.html:108
+msgid "Settings"
+msgstr "Configuraciones"
+
+#: app/common/models.py:248
+msgid "URL link"
+msgstr "URL enlace"
+
+#: app/common/models.py:266 app/super/templates/link/create.html:6
+#: app/super/templates/link/create.html:18
+#: app/super/templates/link/delete.html:6
+#: app/super/templates/link/delete.html:13 app/super/templates/link/edit.html:6
+#: app/super/templates/link/edit.html:18 app/super/templates/link/list.html:33
+msgid "Link"
+msgstr "Enlace"
+
+#: app/common/models.py:267 app/super/templates/link/list.html:7
+#: app/super/templates/link/list.html:16
+#: app/super/templates/super/base.html:115
+msgid "Links"
+msgstr "Enlaces"
+
+#: app/super/accounts/views.py:84 app/super/file/views.py:72
+#: app/super/folder/views.py:73 app/super/link/views.py:75
+#: app/super/role/views.py:75
+msgid "Successful creation"
+msgstr "Creación exitosa"
+
+#: app/super/accounts/views.py:94 app/super/accounts/views.py:134
+#: app/super/accounts/views.py:278 app/super/file/views.py:82
+#: app/super/file/views.py:145 app/super/folder/views.py:83
+#: app/super/folder/views.py:132 app/super/link/views.py:92
+#: app/super/link/views.py:161 app/super/role/views.py:92
+#: app/super/role/views.py:161 app/super/settings/views.py:42
+msgid "Please correct the error below."
+msgstr "Por favor, corrija el error a continuación"
+
+#: app/super/accounts/views.py:124 app/super/file/views.py:135
+#: app/super/folder/views.py:122 app/super/link/views.py:144
+#: app/super/role/views.py:144 app/super/settings/views.py:35
+msgid "Successful update"
+msgstr "Actualización exitosa"
+
+#: app/super/accounts/views.py:166 app/super/file/views.py:178
+#: app/super/folder/views.py:165 app/super/link/views.py:214
+#: app/super/role/views.py:214
+msgid "Successful delete"
+msgstr "Eliminación exitosa"
+
+#: app/super/accounts/views.py:255
+msgid "Las contraseñas no coinciden."
+msgstr ""
+
+#: app/super/accounts/views.py:270
+msgid "Successful password update"
+msgstr "Actualización exitosa de la contraseña"
+
+#: app/super/templates/accounts/create.html:6
+#: app/super/templates/accounts/create.html:18
+#: app/super/templates/accounts/create.html:22
+#: app/super/templates/accounts/edit.html:22
+#: app/super/templates/accounts/list.html:19
+#: app/super/templates/file/create.html:6
+#: app/super/templates/file/create.html:24
+#: app/super/templates/file/create.html:28
+#: app/super/templates/file/edit.html:29 app/super/templates/file/list.html:22
+#: app/super/templates/folder/create.html:6
+#: app/super/templates/folder/create.html:24
+#: app/super/templates/folder/create.html:28
+#: app/super/templates/folder/edit.html:28
+#: app/super/templates/folder/list.html:21
+#: app/super/templates/link/create.html:6
+#: app/super/templates/link/create.html:18
+#: app/super/templates/link/create.html:22
+#: app/super/templates/link/edit.html:22 app/super/templates/link/list.html:20
+#: app/super/templates/role/create.html:6
+#: app/super/templates/role/create.html:18
+#: app/super/templates/role/create.html:22
+#: app/super/templates/role/edit.html:22 app/super/templates/role/list.html:20
+msgid "New"
+msgstr "Agregar"
+
+#: app/super/templates/accounts/create.html:35
+#: app/super/templates/accounts/edit.html:34
+#: app/super/templates/file/create.html:41
+#: app/super/templates/file/edit.html:67
+#: app/super/templates/folder/create.html:40
+#: app/super/templates/folder/edit.html:40
+#: app/super/templates/link/create.html:34
+#: app/super/templates/link/edit.html:34
+#: app/super/templates/role/create.html:34
+#: app/super/templates/role/edit.html:34
+#: app/super/templates/settings/edit.html:28
+msgid "Save"
+msgstr "Guardar"
+
+#: app/super/templates/accounts/create.html:36
+#: app/super/templates/accounts/edit.html:35
+#: app/super/templates/file/create.html:42
+#: app/super/templates/file/edit.html:68
+#: app/super/templates/folder/create.html:41
+#: app/super/templates/folder/edit.html:41
+#: app/super/templates/link/create.html:35
+#: app/super/templates/link/edit.html:35
+#: app/super/templates/role/create.html:35
+#: app/super/templates/role/edit.html:35
+msgid "Save and add another"
+msgstr "Guardar y agregar otro"
+
+#: app/super/templates/accounts/delete.html:6
+#: app/super/templates/accounts/delete.html:13
+#: app/super/templates/accounts/list.html:75
+#: app/super/templates/file/delete.html:6
+#: app/super/templates/file/delete.html:13
+#: app/super/templates/file/list.html:84
+#: app/super/templates/folder/chil_carpeta.html:16
+#: app/super/templates/folder/delete.html:6
+#: app/super/templates/folder/delete.html:13
+#: app/super/templates/folder/list.html:100
+#: app/super/templates/folder/view.html:70
+#: app/super/templates/link/delete.html:6
+#: app/super/templates/link/delete.html:13
+#: app/super/templates/link/list.html:60 app/super/templates/role/delete.html:6
+#: app/super/templates/role/delete.html:13
+#: app/super/templates/role/list.html:49
+msgid "Delete"
+msgstr "Eliminar"
+
+#: app/super/templates/accounts/edit.html:6
+#: app/super/templates/accounts/edit.html:18
+#: app/super/templates/accounts/list.html:70
+#: app/super/templates/file/edit.html:7 app/super/templates/file/edit.html:25
+#: app/super/templates/file/list.html:79
+#: app/super/templates/folder/chil_carpeta.html:11
+#: app/super/templates/folder/edit.html:6
+#: app/super/templates/folder/edit.html:24
+#: app/super/templates/folder/list.html:95
+#: app/super/templates/folder/view.html:65 app/super/templates/link/edit.html:6
+#: app/super/templates/link/edit.html:18 app/super/templates/link/list.html:55
+#: app/super/templates/role/edit.html:6 app/super/templates/role/edit.html:18
+#: app/super/templates/role/list.html:44
+msgid "Update"
+msgstr "Editar"
+
+#: app/super/templates/accounts/list.html:27
+#: app/super/templates/accounts/list.html:28
+#: app/super/templates/file/list.html:31 app/super/templates/file/list.html:32
+#: app/super/templates/folder/view.html:23
+#: app/super/templates/folder/view.html:24
+#: app/super/templates/super/menu.html:11
+#: app/super/templates/super/view.html:23
+#: app/super/templates/super/view.html:24
+msgid "Search"
+msgstr "Buscar"
+
+#: app/super/templates/accounts/list.html:31
+#: app/super/templates/file/list.html:35
+#: app/super/templates/folder/view.html:27
+#: app/super/templates/super/view.html:27
+msgid "Clear"
+msgstr "Limpiar"
+
+#: app/super/templates/accounts/list.html:41
+msgid "State"
+msgstr "Estado"
+
+#: app/super/templates/accounts/list.html:43
+#: app/super/templates/file/list.html:46
+#: app/super/templates/folder/view.html:38
+#: app/super/templates/link/list.html:34 app/super/templates/role/list.html:33
+msgid "Actions"
+msgstr "Acciones"
+
+#: app/super/templates/accounts/list.html:52
+msgid "Active"
+msgstr "Activo"
+
+#: app/super/templates/accounts/list.html:54
+msgid "Inactive"
+msgstr "Inactivo"
+
+#: app/super/templates/accounts/list.html:92
+#: app/super/templates/file/list.html:96
+#: app/super/templates/folder/list.html:116
+#: app/super/templates/folder/view.html:81
+#: app/super/templates/link/list.html:72 app/super/templates/role/list.html:61
+#: app/super/templates/super/results.html:77
+#: app/super/templates/super/view.html:84
+msgid "No data to display"
+msgstr "No hay datos para mostrar"
+
+#: app/super/templates/email/email_data_register.html:7
+msgid "Usuario Creado"
+msgstr ""
+
+#: app/super/templates/file/create.html:43
+#: app/super/templates/file/edit.html:69
+#: app/super/templates/folder/create.html:42
+#: app/super/templates/folder/edit.html:42
+#: app/super/templates/folder/view.html:86
+#: app/super/templates/link/create.html:36
+#: app/super/templates/link/edit.html:36
+#: app/super/templates/role/create.html:36
+#: app/super/templates/role/edit.html:36
+#: app/super/templates/settings/edit.html:29
+msgid "Cancel"
+msgstr "Regresar"
+
+#: app/super/templates/file/edit.html:44
+msgid "History"
+msgstr "Historial"
+
+#: app/super/templates/file/edit.html:55
+msgid "Date time"
+msgstr "Fecha y hora"
+
+#: app/super/templates/file/list.html:65 app/super/templates/folder/view.html:9
+#: app/super/templates/folder/view.html:52
+#: app/super/templates/super/results.html:46
+#: app/super/templates/super/view-file.html:9
+#: app/super/templates/super/view.html:9 app/super/templates/super/view.html:53
+msgid "View"
+msgstr "Ver"
+
+#: app/super/templates/file/list.html:69
+#: app/super/templates/folder/view.html:56
+#: app/super/templates/super/results.html:50
+#: app/super/templates/super/view.html:57
+msgid "Download"
+msgstr "Descargar"
+
+#: app/super/templates/file/list.html:72
+#: app/super/templates/folder/view.html:59
+#: app/super/templates/super/results.html:53
+#: app/super/templates/super/view-file.html:26
+#: app/super/templates/super/view.html:60
+msgid "Size"
+msgstr "Tamaño"
+
+#: app/super/templates/folder/view.html:18
+#: app/super/templates/super/view.html:18
+msgid "Files in this folder"
+msgstr "Archivos en esta carpeta"
+
+#: app/super/templates/folder/view.html:36
+#: app/super/templates/super/results.html:27
+#: app/super/templates/super/view-file.html:25
+#: app/super/templates/super/view.html:36
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: app/super/templates/partials/delete.html:6
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+
+#: app/super/templates/partials/delete.html:13
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+
+#: app/super/templates/partials/delete.html:20
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
+"All of the following related items will be deleted:"
+msgstr ""
+
+#: app/super/templates/partials/delete.html:23
+msgid "Summary"
+msgstr "Resumen"
+
+#: app/super/templates/partials/delete.html:31
+msgid "Objects"
+msgstr "Objetos"
+
+#: app/super/templates/partials/delete.html:40
+msgid "Yes, delete"
+msgstr "Si, eliminar"
+
+#: app/super/templates/partials/delete.html:41
+msgid "No, return"
+msgstr "No, regresar"
+
+#: app/super/templates/partials/pagination.html:10
+msgid "Previous"
+msgstr "Regresar"
+
+#: app/super/templates/partials/pagination.html:32
+msgid "Next"
+msgstr "Siguiente"
+
+#: app/super/templates/super/base.html:83
+msgid "Time"
+msgstr "Hora"
+
+#: app/super/templates/super/base.html:88
+msgid "Help"
+msgstr "Ayuda"
+
+#: app/super/templates/super/home.html:6
+msgid "Home"
+msgstr "Inicio"
+
+#: app/super/templates/super/results.html:9
+#: app/super/templates/super/results.html:18
+msgid "Searching"
+msgstr "Buscando"
+
+#: app/super/templates/super/results.html:30
+#: app/super/templates/super/view-file.html:27
+#: app/super/templates/super/view.html:38
+msgid "Date"
+msgstr "Fecha"
+
+#: app/super/templates/super/view-file.html:18
+msgid "Name of file"
+msgstr "Nombre del archivo"
+
+#: config/settings/base.py:141
+msgid "Spanish"
+msgstr "Español"
+
+#~ msgid "File to help"
+#~ msgstr "Archivo de ayuda"

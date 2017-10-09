@@ -1,0 +1,22 @@
+{% load carpetas_extras %}
+{% load i18n %}
+
+<ul>
+{% for current in subs %}
+    <li>
+        <p style="background:{{ current.color }}">
+            <b>{{ current.titulo }}</b><a href="{% url 'super:folder-edit-file' current.id %}"><span style="font-size: smaller; color: #767474;">Archivos: {{current.total_archivos}}</span></a>&nbsp;&nbsp;
+            <a href="{% url 'super:folder-edit' current.id %}" class="btn btn-primary btn-xs waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">mode_edit</i>
+                <span> {% trans 'Update' %}</span>
+            </a>
+
+            <a href="{% url 'super:folder-delete' current.id %}" class="btn bg-red  btn-xs waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">delete_forever</i>
+                <span> {% trans 'Delete' %}</span>
+            </a>
+        </p>
+        {% chil_carpetas current idRole%}
+    </li>
+{% endfor %}
+</ul>

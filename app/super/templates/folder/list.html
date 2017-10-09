@@ -1,0 +1,123 @@
+
+{% extends 'super/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load carpetas_extras %}
+
+{% block title_header %}
+{% trans 'Folders' %}
+{% endblock %}
+
+{% block container %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+        <div class="header">
+            <h2>
+                {% trans 'Folders' %}
+            </h2>
+            <ul class="header-dropdown m-r--5">
+                <li class="dropdown">
+                    <a href="{% url 'super:folder-new'%}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" data-placement="left" title=""data-original-title="{% trans 'New' %}">
+                        <i class="material-icons">add_circle</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <style>
+        .tree li {
+            margin: 0px 0;
+            list-style-type: none;
+            position: relative;
+            padding: 4px 0px 0px 5px;
+        }
+
+        .tree li::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            right: auto;
+            left: -20px;
+            border-left: 1px solid #ccc;
+            bottom: 50px;
+        }
+        .tree li::after{
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 25px;
+            height: 20px;
+            right: auto;
+            left: -20px;
+            border-top: 1px solid #ccc;
+        }
+        .tree li p{
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #666;
+            font-family: arial, verdana, tahoma;
+            font-size: 11px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+
+        /*Remove connectors before root*/
+        .tree > ul > li::before, .tree > ul > li::after{
+            border: 0;
+        }
+        /*Remove connectors after last child*/
+        .tree li:last-child::before{
+              height: 30px;
+        }
+        p {
+            margin: 0 0 0px;
+        }
+        b {
+            color: black;
+            padding-right: 20px;
+            padding-left: 10px;
+        }
+        </style>
+        <div class="tree">
+            {% if folder_data %}
+                    <ul>
+                    {% for current in folder_data %}
+                        <li>
+                            <p style="background:{{ current.color }}">
+                                <b>{{ current.titulo }}</b><a href="{% url 'super:folder-edit-file' current.id %}"> <span style="font-size: smaller; color: #767474;">{% trans 'Files' %}: {{current.total_archivos}}</span></a>&nbsp;&nbsp;
+                                <a href="{% url 'super:folder-edit' current.id %}" class="btn btn-primary btn-xs waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">mode_edit</i>
+                                    <span> {% trans 'Update' %}</span>
+                                </a>
+
+                                <a href="{% url 'super:folder-delete' current.id %}" class="btn bg-red  btn-xs waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">delete_forever</i>
+                                    <span> {% trans 'Delete' %}</span>
+                                </a>
+                            </p>
+                            {% if request.user.role.id %}
+                                {% chil_carpetas current request.user.role.id%}
+                            {% else %}
+                                {% chil_carpetas current None%}
+                            {% endif %}
+
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <br>
+            {% else %}
+                <div layout="row" layout-align="center center">
+                    <div>
+                        <h3>{% trans 'No data to display' %}</h3>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

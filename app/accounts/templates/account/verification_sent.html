@@ -1,33 +1,24 @@
 {% extends 'account/base.html' %}
-
 {% load i18n %}
 {% load account %}
 {% load static %}
 
-{% block header %}
-<div class="row header-clean">
-    <br>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-    <img class="logo" src="{% static 'img/kualitte.png' %}">
-    </div>
-</div>
-
-{% endblock %}
-
 {% block main %}
+    <div class="logo">
+        {% if  settings %}
+            <a href="/"><img class="logo" src="{{ settings.logo.url }}" alt="{{ settings.name }}" style=" width: 322px;"></a>
+        {% else %}
+            <a href="/"><img class="logo" src="{% static 'img/logo.png' %}" alt="Dokumen" style=" width: 322px;"></a>
+        {% endif %}
+    </div>
+    <div class="card">
+    	<div class="body">
+            <div class="msg"><strong>Verifique su correo eléctronico</strong></div>
+    		<p>{% blocktrans %}Le hemos enviado un correo electrónico para su verificación. Siga el enlace provisto para finalizar el proceso de registro. Por favor contáctenos si no lo recibe en unos minutos.{% endblocktrans %}</p>
+             <br>
+    	</div>
 
-<div class="login-box">
-	<!-- /.login-logo -->
-	<div class="login-box-body" style="text-align:center;">
-		<p  class="login-box-msg">{% trans "Verify Your E-mail Address" %}</p>
-
-
-		<p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
-
-	</div>
-</div>
+    </div>
 {% endblock %}
 
 

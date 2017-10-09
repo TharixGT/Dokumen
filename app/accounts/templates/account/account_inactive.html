@@ -1,11 +1,27 @@
-{% extends "account/base.html" %}
+{% extends 'account/base.html' %}
 
 {% load i18n %}
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+{% get_static_prefix as STATIC_URL %}
+
 
 {% block head_title %}{% trans "Account Inactive" %}{% endblock %}
 
-{% block content %}
-<h1>{% trans "Account Inactive" %}</h1>
-
-<p>{% trans "This account is inactive." %}</p>
+{% block main %}
+<div class="logo">
+    <a href="/"><img class="logo" src="{{ settings.logo.url }}" alt="{{ settings.name }}"></a>
+</div>
+<div class="card">
+    <div class="body">
+            <div class="msg"><strong>Cuenta Inactiva</strong></div>
+        <p class="text-center">Está cuenta esta inactiva.</p>
+        <br>
+        <p>Ponte en contacto con el administrador del sistema, para saber que a pasado con tu cuenta..</p>
+        <br>
+        <div class="auth-links text-center">
+            <a style="color: #000000;" class="btn btn-block bg-blue waves-effect" href="{% url 'account_login' %}">Regresar</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

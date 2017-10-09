@@ -4,28 +4,15 @@
 {% load account %}
 
 
-{% block header %}
-<div class="row header-clean">
-    <br>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-        <img class="logo" src="{% static 'img/kualitte.png' %}">
-    </div>
-</div>
 
-{% endblock %}
 
 {% block main %}
-
-<style>
-    .requiredField{
-        color: #a94442;
-    }
-</style>
-<div class="login-box">
+ <div class="logo">
+        <a href="/"><img class="logo" src="{{ settings.logo.url }}" alt="{{ settings.name }}"></a>
+    </div>
+<div class="card">
 	<!-- /.login-logo -->
-	<div class="login-box-body" style="text-align:center;">
+	<div class="body" >
 
 		{% if confirmation %}
 
@@ -33,27 +20,18 @@
 
 		<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
 			{% csrf_token %}
-            <div class="col-md-12">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                    <div class="col-xs-2">
-                    </div>
-                    <div class="col-xs-8">
-                        <button class="btn  btn-block"  type="submit" style="background: #fbca91; border-color: #fbca91;">{% trans 'Confirm' %}</button>
-                    </div>
-                </div>
+            <div  style="text-align:center;">
+                    <button class="btn btn-lg btn-block btn-success"  type="submit"> <h5>Confirmar</h5></button>
             </div>
             <br>
-            <br>
-            <br>
+
         </form>
 
         {% else %}
 
         {% url 'account_email' as email_url %}
 
-        <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Este enlace de confirmación por correo electrónico expiró o no es válido. Por favor <a href="{{ email_url }}">realize una nueva solicitud de confirmación por correo electrónicot</a>.{% endblocktrans %}</p>
 
         {% endif %}
 

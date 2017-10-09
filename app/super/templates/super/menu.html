@@ -1,27 +1,50 @@
+{% load carpetas_extras %}
 {% load static %}
 {% load i18n %}
+
 <!-- Menu -->
 <div class="menu">
     <ul class="list">
-        <li {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>
-            <a href="{% url 'super:home'%}">
-                <i class="material-icons">search</i>
-                <span>{% trans "Home" %}</span>
-            </a>
+        <li class="active">
+            <form method="GET" action="{% url 'super:search' %}" style="position: relative; display: inline-flex; vertical-align: middle; width: 100%; padding: 10px 13px;">
+                <i class="material-icons" style="padding-right: 9px; padding-top: 6px;">search</i>
+                <input id="search" name="search" type="text" class="form-control" placeholder="{% trans 'Search' %}">
+            </form>
         </li>
-
         {% for current in carpetasMenu %}
-            <li style="background:{{ current.color }}">
-                <a href="{% url 'super:carpeta-view' current.id %}">
+            <li style="background:{{ current.color }};" class="{% active_carpetas current carpetasTitulo arrayTitulo %}">
+                {% if request.user.role.id %}
+                    {% end_carpetas current request.user.role.id %}
+                {% else %}
+                    {% end_carpetas current None %}
+                {% endif %}
                     <i class="material-icons">{{ current.icono }}</i>
                     <span>{{ current.titulo }}</span>
                 </a>
-
+                {% if request.user.role.id %}
+                    {% sub_carpetas current carpetasTitulo arrayTitulo request.user.role.id %}
+                {% else %}
+                    {% sub_carpetas current carpetasTitulo arrayTitulo None %}
+                {% endif %}
             </li>
-
         {% endfor %}
+        {% if link_data %}
+            {% for current in link_data  %}
+                <li style="background:{{ current.color }}" class="toggled waves-effect waves-block">
+                    {% if current.url_link is None %}
+                        <a href="#" >
+                    {% else %}
+                        <a href="{{ current.url_link }}" target="_blank" >
+                    {% endif %}
+                        <i class="material-icons" style="margin-top: 4px;">{{ current.icon }}</i>
+                    <span>{{ current.name }}</span>
+                    </a>
+                </li>
+            {% endfor %}
 
-
+        {% endif %}
     </ul>
+
 </div>
 <!-- #Menu -->
+
