@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+
 {% load account socialaccount %}
 {% load navbar_tags %}
 <!DOCTYPE html>
@@ -42,6 +43,7 @@
     <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
     {% block extra_head %}
     {% endblock %}
+
 </head>
 <body class="theme-blue">
     <!-- # Notificaciones -->
@@ -118,26 +120,7 @@
                 </div>
             </div>
             <!-- #User Info -->
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MENÚ</li>
-                    <li {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>
-                        <a href="{% url 'super:home'%}">
-                            <i class="material-icons">home</i>
-                            <span>{% trans "Home" %}</span>
-                        </a>
-                    </li>
-                    <li {% if request.resolver_match.url_name == 'account_logout' %}class="active"{% endif %}>
-                        <a href="{% url 'account_logout'%}">
-                            <i class="material-icons">input</i>
-                            <span>{% trans "Sign Out" %}</span>
-                        </a>
-
-                    </li>
-                </ul>
-            </div>
-            <!-- #Menu -->
+            {% include "super/menu.html" %}
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
@@ -179,9 +162,8 @@
     <!-- Jquery CountTo Plugin Js -->
     <script src="{% static 'plugins/jquery-countto/jquery.countTo.js' %}"></script>
 
-
     <!-- Custom Js -->
-        <script src="{% static 'js/notifications.js' %}"></script>
+    <script src="{% static 'js/notifications.js' %}"></script>
 
 
     <!-- Demo Js -->

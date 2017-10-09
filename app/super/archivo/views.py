@@ -1,7 +1,7 @@
 """Coupons CRUD."""
 
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from app.common.models import Archivo
+from app.common.models import Archivo, Carpeta
 from . import forms
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
@@ -22,6 +22,14 @@ class ArchivoListView(ListView):
         queryset = queryset.filter()
         return queryset
 
+    def get_context_data(self, **kwargs):   # noqa
+        context = super(ArchivoListView, self).get_context_data(**kwargs)
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
+        return context
+
 
 class ArchivoNewView(CreateView):
     """Archivo Create View."""
@@ -33,6 +41,10 @@ class ArchivoNewView(CreateView):
 
     def get_context_data(self, **kwargs):   # noqa
         context = super(ArchivoNewView, self).get_context_data(**kwargs)
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
         return context
 
     def form_valid(self, form):
@@ -76,6 +88,10 @@ class ArchivoUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):   # noqa
         context = super(ArchivoUpdateView, self).get_context_data(**kwargs)
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
         return context
 
     def form_valid(self, form):
@@ -120,6 +136,10 @@ class ArchivoDeleteView(DeleteView):
         context['model_count'] = dict(model_count).items()
         context['protected'] = protected
         #
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
         return context
 
     def get_queryset(self):

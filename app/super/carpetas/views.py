@@ -22,6 +22,14 @@ class CarpetaListView(ListView):
         queryset = queryset.filter()
         return queryset
 
+    def get_context_data(self, **kwargs):   # noqa
+        context = super(CarpetaListView, self).get_context_data(**kwargs)
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
+        return context
+
 
 class CarpetaNewView(CreateView):
     """Carpeta Create View."""
@@ -33,6 +41,10 @@ class CarpetaNewView(CreateView):
 
     def get_context_data(self, **kwargs):   # noqa
         context = super(CarpetaNewView, self).get_context_data(**kwargs)
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
         return context
 
     def form_valid(self, form):
@@ -76,6 +88,10 @@ class CarpetaUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):   # noqa
         context = super(CarpetaUpdateView, self).get_context_data(**kwargs)
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
         return context
 
     def form_valid(self, form):
@@ -120,6 +136,10 @@ class CarpetaDeleteView(DeleteView):
         context['model_count'] = dict(model_count).items()
         context['protected'] = protected
         #
+        parents = Carpeta.objects.filter()
+        context.update({
+            'carpetasMenu': parents,
+        })
         return context
 
     def get_queryset(self):
