@@ -1,7 +1,19 @@
+1.0.4 (2018-02-17)
+------------------
+- Merge branch 'develop' [Mario Solis]
+- CHANGELOG. [Mario Solis]
+- Fix psycopg2 Version. [Mario Solis]
+- FTR - Develop. [Edwin Najera]
+- FTR - Develop. [Edwin Najera]
+
+
 1.0.3 (2018-01-23)
 ------------------
 - Merge branch 'hotfix/1.0.3' [Edwin Najera]
 - Change message email. [Edwin Najera]
 - FTR - Develop. [Edwin Najera]
+- Vista documentos. [Edwin Najera]
+- Proyect base. [Edwin Najera]
+- Base project django 1.10.5. [Mario Solis]
 
 
